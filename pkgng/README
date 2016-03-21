@@ -1,8 +1,24 @@
-To use on FreeBSD, install etckeeper manually and install the plugin
-with:
- $ cd pkgng
- $ make
- $ make install
+Instructions for FreeBSD (most of them you need to run as root):
 
-and add this line to /usr/local/etc/pkg.conf:
- PLUGINS [ etckeeper ]
+# install git
+pkg install git
+
+# install etckeeper and its pkgng plugin
+cd /usr/local && git clone https://github.com/joeyh/etckeeper
+
+# prepare etc
+mv /usr/local/etc /etc/local; ln -s /etc/local/etc /usr/local
+
+# link script into path
+ln -s /usr/local/etckeeper/etckeeper /usr/local/bin/etckeeper
+
+# symlink etckeeper dir into /etc
+ln -s /usr/local/etckeeper/ /etc
+
+# set HIGHLEVEL_PACKAGE_MANAGER=pkg in /etc/etckeeper/etckeeper.conf
+
+# build pkgng plugin
+cd pkgng && make && make install
+
+# configure pkg to use the pkgng plugin, in /usr/local/etc/pkg.conf
+echo " PLUGINS [ etckeeper ]" >> /usr/local/etc/pkg.conf
