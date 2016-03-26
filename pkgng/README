@@ -6,8 +6,8 @@ pkg install git
 # install etckeeper and its pkgng plugin
 cd /usr/local && git clone https://github.com/joeyh/etckeeper
 
-# prepare etc
-mv /usr/local/etc /etc/local; ln -s /etc/local/etc /usr/local
+# prepare etc (this is needed until "track multiple directories" is resolved: http://etckeeper.branchable.com/todo/track_multiple_directories/)
+mkdir -p /etc/local; mv /usr/local/etc /etc/local; ln -s /etc/local/etc /usr/local
 
 # link script into path
 ln -s /usr/local/etckeeper/etckeeper /usr/local/bin/etckeeper
