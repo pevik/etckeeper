@@ -22,3 +22,6 @@ cd pkgng && make && make install
 
 # configure pkg to use the pkgng plugin, in /usr/local/etc/pkg.conf
 echo " PLUGINS [ etckeeper ]" >> /usr/local/etc/pkg.conf
+
+# initialize /etc with 'etckeeper init'
+etckeeper init
