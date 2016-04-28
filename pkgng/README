@@ -15,7 +15,9 @@ ln -s /usr/local/etckeeper/etckeeper /usr/local/bin/etckeeper
 # symlink etckeeper dir into /etc
 ln -s /usr/local/etckeeper/ /etc
 
-# set HIGHLEVEL_PACKAGE_MANAGER=pkg in /etc/etckeeper/etckeeper.conf
+# Configure pkg & pkgng in /etc/etckeeper/etckeeper.conf:
+# HIGHLEVEL_PACKAGE_MANAGER=pkg
+# LOWLEVEL_PACKAGE_MANAGER=pkgng
 
 # build pkgng plugin
 cd pkgng && make && make install
